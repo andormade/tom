@@ -1,4 +1,4 @@
-import Element from './baseElement';
+import BaseElement from './baseElement';
 
 export default class TextElement extends BaseElement {
 	constructor(options) {
@@ -8,8 +8,8 @@ export default class TextElement extends BaseElement {
 	}
 
 	render() {
-		let data = Text.characterCode(
-			Text.formatText(this.text, this.width, this.color)
+		let data = TextElement.characterCode(
+			TextElement.formatText(this.text, this.width, this.color)
 		);
 
 		return data;
