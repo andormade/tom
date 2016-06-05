@@ -15,7 +15,7 @@ export default class BaseElement {
 	}
 
 	render() {
-		return [];
+		return [new Array(this.width).fill(32)];
 	}
 
 	addChild(child) {

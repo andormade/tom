@@ -5,14 +5,13 @@ export default class TextElement extends BaseElement {
 		super(options);
 		this.text = options.text;
 		this.color = options.color;
+		this.resetBackground = options.resetBackground;
 	}
 
 	render() {
-		let data = TextElement.characterCode(
+		return TextElement.characterCode(
 			TextElement.formatText(this.text, this.width, this.color)
 		);
-
-		return data;
 	}
 
 	/**
@@ -24,6 +23,10 @@ export default class TextElement extends BaseElement {
 		let row = 0;
 		let rows = [];
 		rows[0] = [color];
+
+		if (this.resetBackground) {
+			rows[1] = 0x4;
+		}
 
 		words.forEach((word) => {
 			word += ' ';
