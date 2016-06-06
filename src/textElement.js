@@ -1,7 +1,7 @@
 import BaseElement from './baseElement';
 
 export default class TextElement extends BaseElement {
-	constructor(options) {
+	constructor(options = {}) {
 		super(options);
 		this.text = options.text;
 		this.color = options.color;

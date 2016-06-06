@@ -1,6 +1,5 @@
 import BaseElement from './baseElement';
-
-const SPACE_CHARACTER = 32;
+import {SPACE_CHARACTER} from './constants';
 
 export default class LineElement extends BaseElement {
 	render() {
