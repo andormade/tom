@@ -35,19 +35,18 @@ export default class Utils {
 	}
 
 	static merge2dArray(destination, source, offsetX = 0, offsetY = 0) {
-		for (let row = offsetY; row < offsetY + source.length; row++) {
+		for (let row = 0; row < offsetY + source.length; row++) {
 			if (typeof destination[row] === 'undefined') {
 				destination[row] = [];
 			}
-			for (let col = 0; col < offsetX + source[row - offsetY].length; col++) {
-				if (
-					typeof destination[row][col] === 'undefined' &&
-					(col < offsetX || row < offsetY)
-				) {
-					destination[row][col] = SPACE_CHARACTER;
-				}
-				else if (row >= offsetY && col >= offsetX) {
-					destination[row][col] = source[row - offsetY][col - offsetX];
+			if (row >= offsetY) {
+				for (let col = 0; col < offsetX + source[row - offsetY].length; col++) {
+					if (col >= offsetX) {
+						destination[row][col] = source[row - offsetY][col - offsetX];
+					}
+					else if (typeof destination[row][col] === 'undefined') {
+						destination[row][col] = SPACE_CHARACTER;
+					}
 				}
 			}
 		}

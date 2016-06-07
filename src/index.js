@@ -4,16 +4,18 @@ import RootElement from './rootElement';
 import ContainerElement from './containerElement';
 import LineElement from './lineElement';
 import GraphicElement from './graphicElement';
-import GridElement from './gridElement';
-import GridColumnElement from './gridColumnElement';
+import TableElement from './tableElement';
+import TableColumnElement from './tableColumnElement';
+import Utils from './utils';
 
 export default {
-	BaseElement      : BaseElement,
-	RootElement      : RootElement,
-	TextElement      : TextElement,
-	ContainerElement : ContainerElement,
-	LineElement      : LineElement,
-	GraphicElement   : GraphicElement,
-	GridElement      : GridElement,
-	GridColumnElement : GridColumnElement
+	BaseElement        : BaseElement,
+	RootElement        : RootElement,
+	TextElement        : TextElement,
+	ContainerElement   : ContainerElement,
+	LineElement        : LineElement,
+	GraphicElement     : GraphicElement,
+	TableElement       : TableElement,
+	TableColumnElement : TableColumnElement,
+	Utils              : Utils
 }
