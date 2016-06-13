@@ -24,13 +24,12 @@ export default class TableElement extends ContainerElement {
 	renderChildren() {
 		let data = [];
 		let offsetY = 0;
-		let offsetX = 0;
 
 		this.children.forEach((child, index) => {
 			if (index % this.numCols === 0) {
-				offsetY += data.length;
+				offsetY = data.length;
 			}
-			offsetX = (index % this.numCols) * this.colsize;
+			let offsetX = (index % this.numCols) * this.colsize;
 			Utils.merge2dArray(
 				data,
 				child.render(),
@@ -40,8 +39,6 @@ export default class TableElement extends ContainerElement {
 		});
 		return data;
 	}
-
-
 
 	addChild(child) {
 		if (child instanceof TableColumnElement) {
