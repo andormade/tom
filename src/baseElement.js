@@ -31,20 +31,21 @@ export default class BaseElement {
 	}
 
 	getElementById(id) {
+		let element = null;
 		if (this.id === id) {
-			return this;
+			element = this;
 		}
 		this.children.forEach((child) => {
 			if (child.id === id) {
-				return child;
+				element = child;
+				return;
 			}
 			else if (child.getElementById(id) !== null) {
-				return child.getElementById(id);
-			}
-			else {
-				return null;
+				element = child.getElementById(id);
+				return;
 			}
 		});
+		return element;
 	}
 
 	getElementsByClass(className) {
