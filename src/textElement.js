@@ -1,16 +1,20 @@
 import BaseElement from './baseElement';
+import Utils from './utils';
+import {} from './constants';
 
 export default class TextElement extends BaseElement {
 	constructor(options = {}) {
 		super(options);
 		this.text = options.text;
 		this.color = options.color;
+		this.backgroundColor = options.backgroundColor;
 		this.resetBackground = options.resetBackground;
 	}
 
 	render() {
-		return TextElement.characterCode(
-			TextElement.formatText(this.text, this.width, this.color)
+		return Utils.characterCode(
+			this._formatText(this.text, this.width, this.color,
+				this.backgroundColor)
 		);
 	}
 
@@ -18,43 +22,22 @@ export default class TextElement extends BaseElement {
 	 *
 	 * @returns {array}
 	 */
-	static formatText(text, width, color) {
+	_formatText(text, width, color, backgroundColor) {
 		let words = text.split(' ');
 		let row = 0;
 		let rows = [];
-		rows[0] = [color];
+		let pre = Utils.getAlphaRowPrefix(color, backgroundColor);
 
-		if (this.resetBackground) {
-			rows[1] = 0x4;
-		}
+		rows[0] = [].concat(pre);
 
 		words.forEach((word) => {
 			word += ' ';
 			if (rows[row].length + word.length >= width) {
-				rows[++row] = [color];
+				rows[++row] = [].concat(pre);
 			}
 			rows[row] = rows[row].concat(word.split(''));
-
 		}, this);
 
 		return rows;
-	}
-
-	/**
-	 *
-	 *
-	 * @returns {array}
-	 */
-	static characterCode(chars) {
-		for (let i = 0; i < chars.length; i++) {
-			if (Array.isArray(chars[i])) {
-				chars[i] = this.characterCode(chars[i]);
-			}
-			else if (typeof chars[i] === 'string') {
-				chars[i] = chars[i].charCodeAt(0);
-			}
-		}
-
-		return chars;
 	}
 }

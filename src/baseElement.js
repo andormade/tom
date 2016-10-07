@@ -24,9 +24,12 @@ export default class BaseElement {
 		return [new Array(this.width).fill(32)];
 	}
 
-	addChild(child) {
-		child.resize(this.width);
-		this.children.push(child);
+	addChild(children) {
+		Array.prototype.concat(children).forEach((child) => {
+			child.resize(this.width);
+			this.children.push(child);
+		});
+
 		return this;
 	}
 

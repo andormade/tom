@@ -6,6 +6,7 @@ import LineElement from './lineElement';
 import GraphicElement from './graphicElement';
 import TableElement from './tableElement';
 import TableColumnElement from './tableColumnElement';
+import ConditionalElement from './conditionalElement';
 import Utils from './utils';
 
 export default {
@@ -17,5 +18,6 @@ export default {
 	GraphicElement     : GraphicElement,
 	TableElement       : TableElement,
 	TableColumnElement : TableColumnElement,
+	ConditionalElement : ConditionalElement,
 	Utils              : Utils
 }

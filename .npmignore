@@ -2,3 +2,4 @@ browser
 src
 .babelrc
 .gitignore
+node_modules

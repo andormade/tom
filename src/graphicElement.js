@@ -15,7 +15,9 @@ export default class GraphicElement extends BaseElement {
 		let data = [];
 
 		this.graphic.forEach((line, i) => {
-			data[i] = prefix.concat(line);
+			data[i] = prefix
+				.concat(line)
+				.slice(0, this.width);
 		});
 
 		return data;
